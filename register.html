@@ -20,7 +20,7 @@
     .form-container {
       max-width: 200px;
       margin: 30px auto;
-      background: white
+      background: white;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@
 
     form input,
     form textarea {
-      width: 40px
+      width: 40px;
       padding: 10px;
       margin-top: 5px;
       border-radius: 8px;
@@ -61,7 +61,7 @@
   <div class="container d-flex justify-content-center">
 
     <div class="container mt-5">
-    <form onsubmit="register(); return false;">
+    <form id="userForm" onsubmit="register(); return false;">
       <div class="mb-3">
         <label for="name" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="name" name="name" required>
@@ -102,18 +102,31 @@
     </form>
   </div>
   </div>
-
       <script>
-        function register() {
-          alert("Thank you for registering!");
-          document.querySelector("form").reset();
-
-        }
         window.addEventListener('load',()=>{
             alert("Book your seat now! Limited seats available.");
         });
+        document.getElementById('userForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-      </script>
+            const formData = {
+                name: this.name.value,
+                std: this.std.value,
+                boe: this.boe.value,
+                dob: this.dob.value,
+                place: this.place.value,
+                phone: this.phone.value,
+                email: this.email.value
+                
+            };
+            let data = JSON.parse(localStorage.getItem('userData')) || [];
+            data.push(formData);
+            localStorage.setItem('userData', JSON.stringify(data));
+
+            document.getElementById('message').textContent = "Form submitted successfully!";
+            this.reset();
+        });
+    </script>
 
 </body>
 </html>
