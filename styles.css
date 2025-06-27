@@ -104,3 +104,10 @@ section{
 .body{
     background-image: url('registerbg.jpg');
 }
+@media screen and (max-width: 768px) {
+    img.rounded {
+        width: 90%; /* Adjusts width for smaller screens */
+        height: auto;
+        margin: 10px auto;
+    }
+}
