@@ -104,6 +104,7 @@ section{
 .body{
     background-image: url('registerbg.jpg');
 }
+
 .achievements-gallery {
   display: flex;
   justify-content: center;
@@ -131,3 +132,4 @@ section{
     width: 90%;
   }
 }
+       
